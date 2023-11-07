@@ -17,33 +17,33 @@ func New[T any]() *Stack[T] {
 }
 
 // Return the number of items in the stack
-func (this *Stack[T]) Len() int {
-	return this.length
+func (stack *Stack[T]) Len() int {
+	return stack.length
 }
 
 // View the top item on the stack
-func (this *Stack[T]) Peek() (result T) {
-	if this.length == 0 {
+func (stack *Stack[T]) Peek() (result T) {
+	if stack.length == 0 {
 		return
 	}
-	return this.top.value
+	return stack.top.value
 }
 
 // Pop the top item of the stack and return it
-func (this *Stack[T]) Pop() (result T) {
-	if this.length == 0 {
+func (stack *Stack[T]) Pop() (result T) {
+	if stack.length == 0 {
 		return
 	}
 
-	n := this.top
-	this.top = n.prev
-	this.length--
+	n := stack.top
+	stack.top = n.prev
+	stack.length--
 	return n.value
 }
 
 // Push a value onto the top of the stack
-func (this *Stack[T]) Push(value T) {
-	n := &node[T]{value, this.top}
-	this.top = n
-	this.length++
+func (stack *Stack[T]) Push(value T) {
+	n := &node[T]{value, stack.top}
+	stack.top = n
+	stack.length++
 }
